@@ -1,5 +1,3 @@
-import { Canvas } from "@react-three/fiber";
-
 const Gobbler = (props) => {
   const { size, color } = props;
   const radius = size / 2;
