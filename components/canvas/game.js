@@ -1,7 +1,6 @@
-import { createRoot } from "react-dom/client";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
-import { OrbitControls } from "@react-three/drei";
+import Scene from "./scene";
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -27,16 +26,7 @@ function Box(props) {
   );
 }
 const Game = () => {
-  return (
-    <Canvas style={{ height: "100vh" }}>
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} />
-      <Box position={[-1.2, 0, 0]} />
-      <Box position={[1.2, 0, 0]} />
-      <OrbitControls />
-    </Canvas>
-  );
+  return <Scene style={{ height: "100vh" }} />;
 };
 
 export default Game;
