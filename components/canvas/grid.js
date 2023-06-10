@@ -1,5 +1,5 @@
 const Grid = (props) => {
-  const color = 0x967E76;
+  const { color } = props;
   return (
     <group>
       <mesh castShadow receiveShadow position={[-5, 0.5, 0]}>

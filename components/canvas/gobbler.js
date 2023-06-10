@@ -4,7 +4,7 @@ const Gobbler = (props) => {
   const height = size;
   return (
     <mesh castShadow receiveShadow  {...props}>
-      <cylinderGeometry args={[radius, radius, height, 64]} />
+      <cylinderGeometry args={[radius, radius, height, 64]} radius={2}/>
       <meshStandardMaterial color={color} />
     </mesh>
   );

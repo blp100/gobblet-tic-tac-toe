@@ -3,8 +3,10 @@ import { OrbitControls } from "@react-three/drei";
 import Gobbler from "./gobbler";
 import Ground from "./ground";
 import Grid from "./grid";
+import Plane from "./plane";
 
 const Scene = ({ children, ...otherProps }) => {
+  // Build gobblers
   const gobblers = [];
   for (let player = 0; player < 2; player++) {
     for (let size = 0; size < 3; size++) {
@@ -31,7 +33,16 @@ const Scene = ({ children, ...otherProps }) => {
       );
     }
   }
-  console.log(gobblers);
+  // Build Panel
+  const planes = [];
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      const pos = [(j - 1) * 10, 0.1, (i - 1) * 10];
+      planes.push(
+        <Plane key={"plane[" + j + ", " + i + "]"} color={0xffffff} pos={pos} />
+      );
+    }
+  }
 
   return (
     <Canvas
@@ -65,7 +76,8 @@ const Scene = ({ children, ...otherProps }) => {
       <OrbitControls />
       {children}
       <Ground color={0xf9d3b7} />
-      <Grid />
+      <Grid color={0x967e76} />
+      {planes}
       {gobblers}
     </Canvas>
   );
