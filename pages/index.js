@@ -1,11 +1,19 @@
-import Game from "../components/game";
-import NoSsr from "../components/no-ssr";
+import dynamic from "next/dynamic";
+import Head from "next/head";
+
+const Game = dynamic(() => import("../components/game"), {
+  ssr: false,
+  loading: ()=> <h1>Loading...</h1>
+});
 
 const Page = () => {
   return (
-    <NoSsr>
+    <>
+      <Head>
+        <title>Gobblet Tic Tac Toe</title>
+      </Head>
       <Game />
-    </NoSsr>
+    </>
   );
 };
 

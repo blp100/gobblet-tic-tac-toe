@@ -7,5 +7,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  color:bisque;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #222223;
+  text-align: center;
 }
