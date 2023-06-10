@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Gobbler from "./gobbler";
+import Ground from "./ground";
 
 const Scene = ({ children, ...otherProps }) => {
   const gobblers = [];
@@ -32,12 +33,32 @@ const Scene = ({ children, ...otherProps }) => {
   console.log(gobblers);
 
   return (
-    <Canvas {...otherProps} camera={{ position: [0, 80, 100], fov: 20 }}>
+    <Canvas
+      shadows
+      camera={{ position: [0, 80, 100], fov: 20 }}
+      {...otherProps}
+    >
       <ambientLight intensity={0.5} />
-      <spotLight position={[100, 100, 100]} angle={0.15} penumbra={1} />
-      <pointLight position={[-100, -100, -100]} />
+      <spotLight
+        castShadow
+        position={[200, 200, 200]}
+        angle={0.3}
+        penumbra={0.5}
+        intensity={0.5}
+      />
+      <spotLight
+        castShadow
+        position={[-200, 200, 200]}
+        angle={0.2}
+        penumbra={0.5}
+        intensity={0.5}
+      />
+      <pointLight position={[-50, -50, -50]} />
+      <directionalLight castShadow position={[5, 100, 0]} intensity={0.7} 
+        penumbra={0.5} color={0xFFFFFF}/>
       <OrbitControls />
       {children}
+      <Ground color={0xF9D3B7} />
       {gobblers}
     </Canvas>
   );
