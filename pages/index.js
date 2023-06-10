@@ -1,9 +1,10 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import Loader from "../components/dom/loader";
 
-const Game = dynamic(() => import("../components/game"), {
+const Game = dynamic(() => import("../components/canvas/game"), {
   ssr: false,
-  loading: ()=> <h1>Loading...</h1>
+  loading: () => <Loader />,
 });
 
 const Page = () => {
