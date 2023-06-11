@@ -10,7 +10,7 @@ const Gobbler = (props) => {
   const { nodes } = useGLTF("/models/cylinder.gltf");
   const setActive = useGobblerStore((state) => state.setActive);
   const activeGobbler = useGobblerStore((state) => state.active);
-  const isActive = activeGobbler === props.name;
+  const isActive = activeGobbler === ref.current;
 
   return (
     <motion.group animate={{ y: isActive ? 3 : 0 }}>
@@ -22,7 +22,7 @@ const Gobbler = (props) => {
         scale={size}
         onClick={(e) => {
           e.stopPropagation();
-          setActive(e.object.name);
+          setActive(e.object);
         }}
         {...otherProps}
       >
