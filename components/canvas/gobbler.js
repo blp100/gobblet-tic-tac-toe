@@ -1,13 +1,21 @@
+import { useGLTF } from "@react-three/drei";
+
 const Gobbler = (props) => {
   const { size, color } = props;
-  const radius = (size * 2) / 5;
-  const height = size;
+  const { nodes } = useGLTF("/models/cylinder.gltf");
   return (
-    <mesh castShadow receiveShadow {...props}>
-      <cylinderGeometry args={[radius, radius, height, 64]} radius={2} />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.cylinder.geometry}
+      scale={size}
+      {...props}
+    >
       <meshStandardMaterial color={color} />
     </mesh>
   );
 };
 
 export default Gobbler;
+
+useGLTF.preload("/models/cylinder.gltf");
