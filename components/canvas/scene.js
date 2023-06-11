@@ -17,15 +17,15 @@ const Scene = ({ children, ...otherProps }) => {
         player === 0 ? PLAYER_INFO.PLAYER1.COLOR : PLAYER_INFO.PLAYER2.COLOR;
       const pos = player === 0 ? -30 : 30;
       const gobblerSize = SIZES[sizeKeys[size]].VALUE;
-      const zPos = (size - 1) * 12;
-      const yPos = gobblerSize / 2;
+      const z = (size - 1) * 12;
+      const y = gobblerSize / 2;
       const leftName = "player" + player + "size" + size + "left";
       const rightName = "player" + player + "size" + size + "right";
       gobblers.push(
         <Gobbler
           key={leftName}
           name={leftName}
-          position={[pos - gobblerSize / 2 - 1, yPos, zPos]}
+          position={[pos - gobblerSize / 2 - 1, y, z]}
           size={gobblerSize}
           color={color}
         />
@@ -34,7 +34,7 @@ const Scene = ({ children, ...otherProps }) => {
         <Gobbler
           key={rightName}
           name={rightName}
-          position={[pos + gobblerSize / 2 + 1, yPos, zPos]}
+          position={[pos + gobblerSize / 2 + 1, y, z]}
           size={gobblerSize}
           color={color}
         />
