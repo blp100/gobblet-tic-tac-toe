@@ -1,6 +1,6 @@
 const Gobbler = (props) => {
   const { size, color } = props;
-  const radius = size / 2;
+  const radius = size * 2/5;
   const height = size;
   return (
     <mesh castShadow receiveShadow  {...props}>
