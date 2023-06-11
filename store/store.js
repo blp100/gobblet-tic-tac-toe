@@ -1,13 +1,16 @@
 import { create } from "zustand";
 
-export const useGobblerStore = create((set) => ({
-  active: null,
-  setActive: (g) => set((state) => ({ active: g })),
-  unsetActive: () => set({ active: null }),
+const useStore = create((set) => ({
+  activeGobbler: null,
+  onClickGobbler: (activeGobbler) => set(() => ({ activeGobbler })),
+  onClickPlane: (plane) =>
+    set((state) => {
+      if (state.activeGobbler) {
+        state.activeGobbler.userData.plane = plane;
+      }
+      return { activeGobbler: null };
+    }),
+  unsetActiveGobbler: () => set({ activeGobbler: null }),
 }));
 
-export const usePlaneStore = create((set) => ({
-  active: null,
-  setActive: (p) => set((state) => ({ active: p })),
-  unsetActive: () => set({ active: null }),
-}));
+export default useStore;

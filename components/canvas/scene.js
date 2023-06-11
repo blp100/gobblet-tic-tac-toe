@@ -47,7 +47,11 @@ const Scene = ({ children, ...otherProps }) => {
     for (let j = 0; j < 3; j++) {
       const pos = [(j - 1) * 10, 0.1, (i - 1) * 10];
       planes.push(
-        <Plane key={"plane[" + j + ", " + i + "]"} color={0xf9d3b7} pos={pos} />
+        <Plane
+          key={"plane[" + j + ", " + i + "]"}
+          color={0xf9d3b7}
+          position={pos}
+        />
       );
     }
   }

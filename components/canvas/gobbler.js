@@ -2,15 +2,15 @@ import { useGLTF } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { useRef } from "react";
 
-import { useGobblerStore } from "../../store/store";
+import useStore from "../../store/store";
 
 const Gobbler = (props) => {
-  const ref = useRef();
   const { size, color, position, ...otherProps } = props;
-  const [x, y, z] = props.position;
+  const [x, y, z] = position;
+  const ref = useRef();
   const { nodes } = useGLTF("/models/cylinder.gltf");
-  const setActive = useGobblerStore((state) => state.setActive);
-  const activeGobbler = useGobblerStore((state) => state.active);
+  const activeGobbler = useStore((state) => state.activeGobbler);
+  const onClickGobbler = useStore((state) => state.onClickGobbler);
   const isActive = activeGobbler === ref.current;
 
   const plane = ref.current?.userData?.plane;
@@ -29,7 +29,7 @@ const Gobbler = (props) => {
         scale={size}
         onClick={(e) => {
           e.stopPropagation();
-          setActive(e.object);
+          onClickGobbler(e.object);
         }}
         animate={{
           x: plane ? plane.position.x : x,
