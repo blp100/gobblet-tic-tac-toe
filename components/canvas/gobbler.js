@@ -13,23 +13,22 @@ const Gobbler = (props) => {
   const isActive = activeGobbler === props.name;
 
   return (
-    <motion.mesh
-      ref={ref}
-      castShadow
-      receiveShadow
-      geometry={nodes.cylinder.geometry}
-      scale={size}
-      animate={{
-        y: isActive ? otherProps.position[1] + 3 : otherProps.position[1],
-      }}
-      onClick={(e) => {
-        e.stopPropagation();
-        setActive(e.object.name);
-      }}
-      {...otherProps}
-    >
-      <meshStandardMaterial color={color} />
-    </motion.mesh>
+    <motion.group animate={{ y: isActive ? 3 : 0 }}>
+      <mesh
+        ref={ref}
+        castShadow
+        receiveShadow
+        geometry={nodes.cylinder.geometry}
+        scale={size}
+        onClick={(e) => {
+          e.stopPropagation();
+          setActive(e.object.name);
+        }}
+        {...otherProps}
+      >
+        <meshStandardMaterial color={color} />
+      </mesh>
+    </motion.group>
   );
 };
 
