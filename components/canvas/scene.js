@@ -5,15 +5,18 @@ import Ground from "./ground";
 import Grid from "./grid";
 import Plane from "./plane";
 import Arrow from "./arrow";
+import { SIZES, GOBBLER_TYPE, PLANE_TYPE, PLAYER_INFO } from "../../constants";
 
 const Scene = ({ children, ...otherProps }) => {
   // Build gobblers
   const gobblers = [];
+  const sizeKeys = Object.keys(SIZES);
   for (let player = 0; player < 2; player++) {
     for (let size = 0; size < 3; size++) {
-      const color = player === 0 ? 0xff731d : 0x5f9df7;
+      const color =
+        player === 0 ? PLAYER_INFO.PLAYER1.COLOR : PLAYER_INFO.PLAYER2.COLOR;
       const pos = player === 0 ? -30 : 30;
-      const gobblerSize = (size + 1) * 2 + 5;
+      const gobblerSize = SIZES[sizeKeys[size]].VALUE;
       const zPos = (size - 1) * 12;
       const yPos = gobblerSize / 2;
       gobblers.push(
@@ -45,8 +48,25 @@ const Scene = ({ children, ...otherProps }) => {
     }
   }
   const arrows = [];
-  arrows.push(<Arrow color={0xff731d} xPos={-10} zRot={Math.PI/2}/>)
-  arrows.push(<Arrow color={0x5f9df7} xPos={10} zRot={-Math.PI/2} visible={false}/>)
+  arrows.push(
+    <Arrow
+      key={PLAYER_INFO.PLAYER1.ARROW_NAME}
+      name={PLAYER_INFO.PLAYER1.ARROW_NAME}
+      color={PLAYER_INFO.PLAYER1.COLOR}
+      xPos={-10}
+      zRot={Math.PI / 2}
+    />
+  );
+  arrows.push(
+    <Arrow
+      key={PLAYER_INFO.PLAYER2.ARROW_NAME}
+      name={PLAYER_INFO.PLAYER2.ARROW_NAME}
+      color={PLAYER_INFO.PLAYER2.COLOR}
+      xPos={10}
+      zRot={-Math.PI / 2}
+      visible={false}
+    />
+  );
 
   return (
     <Canvas
@@ -86,8 +106,7 @@ const Scene = ({ children, ...otherProps }) => {
         shadow-camera-bottom={-1500}
         shadow-bias={-0.00004}
       />
-      <OrbitControls
-      maxPolarAngle={(Math.PI/2)*0.90} />
+      <OrbitControls maxPolarAngle={(Math.PI / 2) * 0.9} />
       {children}
       <Ground color={0xf9d3b7} />
       <Grid color={0x967e76} />
