@@ -6,6 +6,7 @@ import Grid from "./grid";
 import Plane from "./plane";
 import Arrow from "./arrow";
 import { SIZES, GOBBLER_TYPE, PLANE_TYPE, PLAYER_INFO } from "../../constants";
+import WinnerText from "./winner-text";
 
 const Scene = ({ children, ...otherProps }) => {
   // Build gobblers
@@ -87,6 +88,23 @@ const Scene = ({ children, ...otherProps }) => {
       visible={false}
     />
   );
+  const winnerTexts = []
+  winnerTexts.push(
+    <WinnerText
+      key={PLAYER_INFO.PLAYER1.WINNER_NAME}
+      name={PLAYER_INFO.PLAYER1.WINNER_NAME}
+      color={PLAYER_INFO.PLAYER1.COLOR}
+      visible={false}
+    />
+  );
+  winnerTexts.push(
+    <WinnerText
+      key={PLAYER_INFO.PLAYER2.WINNER_NAME}
+      name={PLAYER_INFO.PLAYER2.WINNER_NAME}
+      color={PLAYER_INFO.PLAYER2.COLOR}
+      visible={false}
+    />
+  );
 
   return (
     <Canvas
@@ -133,6 +151,7 @@ const Scene = ({ children, ...otherProps }) => {
       {planes}
       {gobblers}
       {arrows}
+      {winnerTexts}
     </Canvas>
   );
 };
