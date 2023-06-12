@@ -85,7 +85,6 @@ const Scene = ({ children, ...otherProps }) => {
       color={PLAYER_INFO.PLAYER2.COLOR}
       xPos={10}
       zRot={-Math.PI / 2}
-      visible={false}
     />
   );
   const winnerTexts = []

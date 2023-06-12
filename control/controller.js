@@ -10,9 +10,41 @@ for (let i = 1; i <= 3; i++) {
   }
 }
 
-const useStore = create((set) => ({
-  activePlayer: PLAYER_INFO.PLAYER1.NAME,
-  setPlayer: (activePlayer) => set(() => ({ activePlayer })),
+const useStore = create((set, get) => ({
+  activePlayer: PLAYER_INFO.PLAYER1,
+  setPlayer: (activePlayer) =>
+    set(() => {
+      return { activePlayer };
+    }),
+  // arrow: null, // object
+  // setArrow: (arrow) => set(() => ({ arrow })),
+  // test: () => {
+  //   return get();
+  // },
+  arrow: null,
+  setArrow: (arrow) => set((state) => ({ arrow })),
+  setArrowVisible: (arrow) =>
+    set(() => {
+      console.log(get().activePlayer);
+      if (!arrow?.name) {
+        console.log("!!!");
+        return;
+      }
+      if (arrow.name === get()?.activePlayer?.ARROW_NAME) {
+        console.log("2!!!");
+        arrow.visible = true;
+        return { arrow };
+      } else {
+        console.log("3!!!");
+        arrow.visible = false;
+        return { arrow };
+      }
+    }),
+  // isArrowVisible: (arrow) => {
+  //   // console.log(arrow?.name);
+  //   console.log(get().activePlayer.ARROW_NAME);
+  //   // return arrow.name === get().activePlayer.ARROW_NAME;
+  // },
   activeGobbler: null,
   onClickGobbler: (activeGobbler) => set(() => ({ activeGobbler })),
   onClickPlane: (plane) =>
@@ -29,21 +61,22 @@ const useStore = create((set) => ({
             tempArr.splice(prevIndex, 1);
             newBoard.set(planeKey, tempArr); // remove previous gobbler
 
-            if (!winner){
-              winner = checkWinner(newBoard)
+            if (!winner) {
+              winner = checkWinner(newBoard);
             }
           }
           state.activeGobbler.userData.plane = plane;
           const newArr = [...arr, state.activeGobbler];
           newBoard.set(plane.userData.key, newArr); // add gobbler in new position
-          if (!winner){
-            winner = checkWinner(newBoard)
+          if (!winner) {
+            winner = checkWinner(newBoard);
           }
 
-          console.log(winner);
+          // console.log(winner);
           return {
             activeGobbler: null,
             board: newBoard,
+            activePlayer: PLAYER_INFO.PLAYER2,
           };
         }
       }
