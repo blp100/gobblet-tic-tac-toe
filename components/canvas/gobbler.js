@@ -2,7 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { useRef } from "react";
 
-import useStore from "../../store/store";
+import useStore from "../../control/controller";
 
 const Gobbler = (props) => {
   const { size, color, position, ...otherProps } = props;

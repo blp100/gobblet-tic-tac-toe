@@ -28,6 +28,7 @@ const Scene = ({ children, ...otherProps }) => {
           position={[pos - gobblerSize / 2 - 1, y, z]}
           size={gobblerSize}
           color={color}
+          userData={{ size: SIZES[sizeKeys[size]]}}
         />
       );
       gobblers.push(
@@ -37,20 +38,23 @@ const Scene = ({ children, ...otherProps }) => {
           position={[pos + gobblerSize / 2 + 1, y, z]}
           size={gobblerSize}
           color={color}
+          userData={{ size: SIZES[sizeKeys[size]]}}
         />
       );
     }
   }
   // Build Panel
   const planes = [];
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      const pos = [(j - 1) * 10, 0.1, (i - 1) * 10];
+  for (let i = 1; i <= 3; i++) {
+    for (let j = 1; j <= 3; j++) {
+      const pos = [(j - 2) * 10, 0.1, (i - 2) * 10];
       planes.push(
         <Plane
-          key={"plane[" + j + ", " + i + "]"}
+          key={"plane" + i + "" + j}
           color={0xf9d3b7}
           position={pos}
+          name={"plane" + i + "" + j}
+          userData={{ key: i + "" + j }}
         />
       );
     }

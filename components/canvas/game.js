@@ -1,4 +1,4 @@
-import Scene from "./scene";
+import Scene from "./environment";
 
 const Game = () => {
   return <Scene style={{ height: "100vh" }} />;

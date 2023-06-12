@@ -1,4 +1,4 @@
-import useStore from "../../store/store";
+import useStore from "../../control/controller";
 
 const Plane = (props) => {
   const { color, ...otherProps } = props;
