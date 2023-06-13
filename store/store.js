@@ -10,7 +10,7 @@ for (let i = 1; i <= 3; i++) {
 
 const useStore = create((set, get) => ({
   board: initialMap,
-  setBoard:(board) => set(() => ({ board })),
+  setBoard: (board) => set(() => ({ board })),
   activePlayer: PLAYER_INFO.PLAYER1,
   setPlayer: (activePlayer) => set(() => ({ activePlayer })),
   activeGobbler: null,

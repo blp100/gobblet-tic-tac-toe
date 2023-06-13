@@ -1,15 +1,28 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Ground from "./ground";
 import Grid from "./grid";
+
+// Set camerra view on different screen size
+const Resize = () => {
+  const camera = useThree((state) => state.camera);
+  const viewport = useThree((state) => state.viewport);
+
+  if (viewport.width / viewport.height < 1){
+    camera.position.y= 240;
+  }else{
+    camera.position.y= 160;
+  }
+};
 
 const Scene = ({ children, ...otherProps }) => {
   return (
     <Canvas
       shadows
-      camera={{ position: [-12, 160, 200], fov: 20 }}
+      camera={{position:[-12, 160, 200], fov: 20}}
       {...otherProps}
     >
+      <Resize />
       <ambientLight intensity={0.5} />
       <spotLight
         castShadow

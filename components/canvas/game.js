@@ -12,6 +12,7 @@ import checkWinner from "../../lib/check-winner";
 const Game = () => {
   const ref = useRef();
 
+  // game object state
   const activePlayer = useStore((state) => state.activePlayer);
   const setPlayer = useStore((state) => state.setPlayer);
   const activeGobbler = useStore((state) => state.activeGobbler);
@@ -23,6 +24,7 @@ const Game = () => {
   const winner = useStore((state) => state.winner);
   const setWinner = useStore((state) => state.setWinner);
 
+  // game rule
   useEffect(() => {
     if (activeGobbler && activePlane) {
       const arr = board.get(activePlane.userData.key);
@@ -134,53 +136,6 @@ const Game = () => {
       }
     }
     return p;
-  }, []);
-
-  // Build Arrows
-  const arrows = useMemo(() => {
-    const a = [];
-    a.push(
-      <Arrow
-        key={PLAYER_INFO.PLAYER1.ARROW_NAME}
-        name={PLAYER_INFO.PLAYER1.ARROW_NAME}
-        color={PLAYER_INFO.PLAYER1.COLOR}
-        xPos={-10}
-        zRot={Math.PI / 2}
-      />
-    );
-    a.push(
-      <Arrow
-        key={PLAYER_INFO.PLAYER2.ARROW_NAME}
-        name={PLAYER_INFO.PLAYER2.ARROW_NAME}
-        color={PLAYER_INFO.PLAYER2.COLOR}
-        xPos={10}
-        zRot={-Math.PI / 2}
-        visible={false}
-      />
-    );
-    return a;
-  }, []);
-
-  // Build Winner Instruction
-  const winnerTexts = useMemo(() => {
-    const w = [];
-    w.push(
-      <WinnerText
-        key={PLAYER_INFO.PLAYER1.WINNER_NAME}
-        name={PLAYER_INFO.PLAYER1.WINNER_NAME}
-        color={PLAYER_INFO.PLAYER1.COLOR}
-        visible={false}
-      />
-    );
-    w.push(
-      <WinnerText
-        key={PLAYER_INFO.PLAYER2.WINNER_NAME}
-        name={PLAYER_INFO.PLAYER2.WINNER_NAME}
-        color={PLAYER_INFO.PLAYER2.COLOR}
-        visible={false}
-      />
-    );
-    return w;
   }, []);
 
   return (
