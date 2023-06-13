@@ -61,7 +61,12 @@ const Scene = ({ children, ...otherProps }) => {
         shadow-camera-bottom={-1500}
         shadow-bias={-0.00004}
       />
-      <OrbitControls maxPolarAngle={(Math.PI / 2) * 0.9} />
+      <OrbitControls
+        enablePan={false}
+        minDistance={150}
+        maxDistance={600}
+        maxPolarAngle={(Math.PI / 2) * 0.9}
+      />
       <Ground color={0xf9d3b7} />
       <Grid color={0x967e76} />
       {children}
