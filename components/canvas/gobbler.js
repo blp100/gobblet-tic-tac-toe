@@ -9,11 +9,14 @@ const Gobbler = (props) => {
   const [x, y, z] = position;
   const ref = useRef();
   const { nodes } = useGLTF("/models/cylinder.gltf");
+  const activePlayer = useStore((state) => state.activePlayer);
   const activeGobbler = useStore((state) => state.activeGobbler);
   const setActiveGobbler = useStore((state) => state.setActiveGobbler);
   const isActive = activeGobbler === ref.current;
 
   const plane = ref.current?.userData?.plane;
+
+  // console.log(activePlayer.NAME, ref.current?.userData?.player);
 
   return (
     <motion.group
@@ -29,7 +32,9 @@ const Gobbler = (props) => {
         scale={size}
         onClick={(e) => {
           e.stopPropagation();
-          setActiveGobbler(e.object);
+          if (e.object.userData.player === activePlayer?.NAME) {
+            setActiveGobbler(e.object);
+          }
         }}
         animate={{
           x: plane ? plane.position.x : x,

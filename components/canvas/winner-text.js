@@ -2,7 +2,7 @@ import { Center, Text3D } from "@react-three/drei";
 import externalFont from "../../public/fonts/Mansalva_Regular.json"
 
 const WinnerText = (props) => {
-  const { color, ...otherProps } = props;
+  const { color,text, ...otherProps } = props;
 
   return (
     <Center top position={[0, 2, -30]} rotation={[-Math.PI / 4, 0, 0]} {...otherProps}>
@@ -19,7 +19,7 @@ const WinnerText = (props) => {
         size={10}
         font={externalFont}
       >
-        winner
+        {text}
         <meshStandardMaterial color={color} />
       </Text3D>
     </Center>
