@@ -28,6 +28,7 @@ const Scene = ({ children, ...otherProps }) => {
       {...otherProps}
     >
       <Resize />
+      <color attach="background" args={["#D3C1B0"]} />
       <ambientLight intensity={0.5} />
       <spotLight
         castShadow
