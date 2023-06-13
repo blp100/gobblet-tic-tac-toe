@@ -1,9 +1,8 @@
 import { Center, Text3D } from "@react-three/drei";
-// import useStore from "../../control/controller";
+import externalFont from "../../public/fonts/Mansalva_Regular.json"
 
 const WinnerText = (props) => {
   const { color, ...otherProps } = props;
-  //   const onClickPlane = useStore((state) => state.onClickPlane);
 
   return (
     <Center top position={[0, 2, -30]} rotation={[-Math.PI / 4, 0, 0]} {...otherProps}>
@@ -18,26 +17,12 @@ const WinnerText = (props) => {
         lineHeight={0.5}
         letterSpacing={-0.1}
         size={10}
-        font="/fonts/Mansalva_Regular.json"
-        // onWheel={}
+        font={externalFont}
       >
         winner
         <meshStandardMaterial color={color} />
       </Text3D>
     </Center>
-    // <mesh
-    //   castShadow
-    //   receiveShadow
-    //   rotation={[-Math.PI / 2, 0, 0]}
-    //   onClick={(e) => {
-    //     e.stopPropagation();
-    //     onClickPlane(e.object);
-    //   }}
-    //   {...otherProps}
-    // >
-    //   <planeGeometry args={[10, 10]} />
-    //   <meshStandardMaterial color={color} />
-    // </mesh>
   );
 };
 
