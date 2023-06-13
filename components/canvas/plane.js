@@ -1,8 +1,9 @@
-import useStore from "../../control/controller";
+import useStore from "../../store/store";
 
 const Plane = (props) => {
   const { color, ...otherProps } = props;
-  const onClickPlane = useStore((state) => state.onClickPlane);
+  const setActivePlane = useStore((state) => state.setActivePlane);
+  const activeGobbler = useStore((state) => state.activeGobbler);
 
   return (
     <mesh
@@ -11,7 +12,7 @@ const Plane = (props) => {
       rotation={[-Math.PI / 2, 0, 0]}
       onClick={(e) => {
         e.stopPropagation();
-        onClickPlane(e.object);
+        if (activeGobbler) setActivePlane(e.object);
       }}
       {...otherProps}
     >
