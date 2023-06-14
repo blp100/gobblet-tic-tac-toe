@@ -53,7 +53,7 @@ https://www.youtube.com/watch?v=nYvYEhBG9HM
 <a href="https://github.com/linchenhsin" style="display: flex; align-items: center; gap: 0.6rem;"><img src="https://avatars.githubusercontent.com/u/5905597?v=4" style="width: 36px; border-radius: 50%;" />Lin Chen-Hsin
 </a>
 
-<a href="https://github.com/blp100" style="display: flex; align-items: center; gap: 0.6rem;"><img src="https://avatars.githubusercontent.com/u/5905597?v=4" style="width: 36px; border-radius: 50%;" />Yeh Po-Cheng
+<a href="https://github.com/blp100" style="display: flex; align-items: center; gap: 0.6rem;"><img src="https://avatars.githubusercontent.com/u/70035368?v=4" style="width: 36px; border-radius: 50%;" />Yeh Po-Cheng
 </a>
 
 ## Acknowledgements
