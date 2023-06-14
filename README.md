@@ -43,6 +43,7 @@ https://www.youtube.com/watch?v=nYvYEhBG9HM
 
 - React Three Fiber
 - zustand
+- Framer Motion 3D
 - JavaScript
 - Three.js (3D Graphics Library)
 - React.js (JavaScript Library for UI)
