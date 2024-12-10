@@ -131,6 +131,7 @@ const Game = () => {
             position={pos}
             name={"plane" + i + "" + j}
             userData={{ key: i + "" + j }}
+            visible={false}
           />
         );
       }

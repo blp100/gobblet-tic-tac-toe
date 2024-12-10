@@ -7,8 +7,6 @@ const Plane = (props) => {
 
   return (
     <mesh
-      castShadow
-      receiveShadow
       rotation={[-Math.PI / 2, 0, 0]}
       onClick={(e) => {
         e.stopPropagation();
